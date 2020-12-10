@@ -7,48 +7,9 @@ pokemon = [
         "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
         "name": "bulbizar",
         "id": 5,
-        "types": {
-            {
-                "name": "grass"
-            },
-            {
-                "name": "poison"
-            }
-        },
-        "ability": {
-            {
-                "name": "overgrow"
-            },
-            {
-                "name": "chlorophyll"
-            }
-        },
-        "stats": {
-            {
-                "base_stat": 45,
-                "name": "hp"
-            },
-            {
-                "base_stat": 45,
-                "name": "attack"
-            },
-            {
-                "base_stat": 45,
-                "name": "defense"
-            },
-            {
-                "base_stat": 45,
-                "name": "special-attack"
-            },
-            {
-                "base_stat": 45,
-                "name": "special-defense"
-            },
-            {
-                "base_stat": 45,
-                "name": "speed"
-            },
-        }
+        "types": ["grass", "poison"],
+        "ability": ["overgrow", "chlorophyll"],
+        "stats": [[45, "hp"], [45, "attack"], [45, "defense"], [45, "special-attack"], [45, "special-defense"], [45, "speed"]],
     }
 ]
 

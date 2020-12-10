@@ -24,17 +24,19 @@ def display_pokemon_character(pokemon):
     grid = QGridLayout()
 
     # ----- elements label -----
+    sprite = sprite_pokemon(pokemon["url"], pokemon["name"])
+
+    grid.addWidget(sprite, 0, 0, columnSpan=2, rowSpan=2)
+
     name = QLabel(pokemon["name"])
     id = QLabel("#" + str(pokemon["id"]))
-    sprite = sprite_pokemon(pokemon["url"], pokemon["name"])
     btn_add = QPushButton("Add to Team")
 
     btn_add.clicked.connect(lambda: function_view(pokemon["id"]))
 
-    grid.addWidget(sprite, (count_repeat // 5) * 5 + 0, count_repeat % 5)
-    grid.addWidget(name, (count_repeat // 5) * 5 + 1, count_repeat % 5, alignment=Qt.AlignCenter)
-    grid.addWidget(id, (count_repeat // 5) * 5 + 2, count_repeat % 5, alignment=Qt.AlignCenter)
-    grid.addWidget(btn_add, (count_repeat // 5) * 5 + 4, count_repeat % 5, alignment=Qt.AlignCenter)
+    grid.addWidget(name, 1, 0)
+    grid.addWidget(id, 1, 1)
+    grid.addWidget(btn_add, 3, 5)
 
     w.setLayout(grid)
     sa.setWidget(w)

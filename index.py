@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import QApplication
 from Display.home.display import HomeMenu
 from generation.pokedex import *
 
+
 # pokemons = [
 #    {
 #        "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
@@ -12,9 +13,10 @@ from generation.pokedex import *
 # ]
 
 
-def main(pokemons):
+def main():
+    pokedex=Pokedex()
     app = QApplication(sys.argv)
-    w = HomeMenu(pokemons)
+    w = HomeMenu(pokedex)
     sys.exit(app.exec_())
 
 

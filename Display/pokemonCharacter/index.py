@@ -1,7 +1,7 @@
 import sys
 from PyQt5.QtWidgets import QApplication
 from Display.pokemonCharacter.display import PokemonCharacter
-
+from generationpokedex import *
 #pokemon = {
 #    "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
 #    "name": "bulbizar",
@@ -12,9 +12,10 @@ from Display.pokemonCharacter.display import PokemonCharacter
 #}
 
 
-def main(pokemon):
+def main():
+    pokedex=Pokedex()
     app = QApplication(sys.argv)
-    w = PokemonCharacter(pokemon)
+    w = PokemonCharacter(pokedex)
     sys.exit(app.exec_())
 
 

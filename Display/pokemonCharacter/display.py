@@ -24,10 +24,10 @@ def display_pokemon_character(pokemon):
     grid = QGridLayout()
 
     # ----- elements label -----
-    sprite = sprite_pokemon(pokemon["url"], pokemon["name"])
+    sprite = sprite_pokemon(pokemon.sprite, pokemon.nom)
     id_name = QLabel(
-        "#" + str(pokemon["id"]) + "\n" +
-        pokemon["name"]
+        "#" + str(pokemon.id) + "\n" +
+        pokemon.nom
     )
     stat_label_title = QLabel("Stats:")
     abilities_label_title = QLabel("Abilities:")
@@ -36,27 +36,28 @@ def display_pokemon_character(pokemon):
     btn_next = QPushButton("Next")
 
     # ----- elements label type -----
-    count_repeat = 0
-    for type in pokemon["types"]:
+        
+    type_label = QLabel("Types: \n" + pokemon.type1)
+    grid.addWidget(type_label, 2, 4, 1, 1)
 
-        if type is not None:
-            type_label = QLabel("Types: \n" + type if count_repeat == 0 else "\n" + type)
-            grid.addWidget(type_label, 2, (4 + count_repeat), 1, 1)
-        count_repeat += 1
+    if pokemon.type2 is not None:
+        type_label = QLabel("\n" + pokemon.type2 )
+        grid.addWidget(type_label, 2, 5, 1, 1)
+     
 
     # ----- elements label stats -----
     count_repeat = 0
-    for stat in pokemon["stats"]:
+    for stat in pokemon.statistiques:
 
-        stat_label = QLabel(stat[1] + ": " + str(stat[0]))
+        stat_label = QLabel(stat.name + ": " + str(stat.stat))
         grid.addWidget(stat_label, (5 + (count_repeat // 3)), (3 * (count_repeat % 3)), 2, 1)
         count_repeat += 1
 
     # ----- elements label abilities -----
     count_repeat = 0
-    for ability in pokemon["abilities"]:
+    for ability in pokemon.abilities:
 
-        ability_label = QLabel(ability)
+        ability_label = QLabel(ability.name + ": \n" + ability.effect + "\n" + abilitry.short_effect)
         grid.addWidget(ability_label, (11 + (count_repeat // 3)), (3 * (count_repeat % 3)), 2, 1)
         count_repeat += 1
 
@@ -67,9 +68,9 @@ def display_pokemon_character(pokemon):
     grid.addWidget(abilities_label_title, 10, 0)
     grid.addWidget(btn_add, 0, 8)
 
-    btn_add.clicked.connect(lambda: add_team(pokemon["id"]))
-    btn_add.clicked.connect(lambda: previous(pokemon["id"]))
-    btn_add.clicked.connect(lambda: next(pokemon["id"]))
+    btn_add.clicked.connect(lambda: add_team(pokemon.id))
+    btn_add.clicked.connect(lambda: previous(pokemon.id))
+    btn_add.clicked.connect(lambda: next(pokemon.id))
 
     w.setLayout(grid)
     sa.setWidget(w)

@@ -7,7 +7,7 @@ class Pokedex():
     pokedex=[]
     def __init__(self):
         i=1
-        r=requests.get("https://pokeapi.co/api/v2/pokemon?limit=160&offset=0")
+        r=requests.get("https://pokeapi.co/api/v2/pokemon?limit=151&offset=0")
         if r.status_code==200:
             result=r.json()
             for elem in result["results"]:

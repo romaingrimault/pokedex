@@ -2,11 +2,11 @@ import sys
 from PyQt5.QtWidgets import QApplication
 from pokedex.display.home.display import HomeMenu
 
-pokemons =[
+pokemons = [
     {
         "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
         "name": "bulbizar",
-        "id": 1
+        "id": 5
     },
     {
         "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
@@ -144,6 +144,7 @@ pokemons =[
         "id": 1
     }
 ]
+
 
 def main():
     app = QApplication(sys.argv)

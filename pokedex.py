@@ -48,6 +48,14 @@ class Pokedex():
                         i+=1
                     abilities.append(Abilities(resultAbi["name"],resultAbi["effect_entries"][englishRow]["effect"],resultAbi["effect_entries"][englishRow]["short_effect"]))
             self.pokedex[id].charge(sprite,type1,type2,statistiques,abilities)
+    def findByName(self,string):
+        ret=[]
+        for elem in self.pokedex:
+            check=self.pokedex[elem].nom.find(string)
+            if check!=-1:
+                ret.append(self.pokedex[elem])
+        return ret
+            
 
 
 

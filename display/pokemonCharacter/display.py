@@ -32,6 +32,8 @@ def display_pokemon_character(pokemon):
     stat_label_title = QLabel("Stats:")
     abilities_label_title = QLabel("Abilities:")
     btn_add = QPushButton("Add to Team")
+    btn_previous = QPushButton("Previous")
+    btn_next = QPushButton("Next")
 
     # ----- elements label type -----
     count_repeat = 0
@@ -66,6 +68,8 @@ def display_pokemon_character(pokemon):
     grid.addWidget(btn_add, 0, 8)
 
     btn_add.clicked.connect(lambda: add_team(pokemon["id"]))
+    btn_add.clicked.connect(lambda: previous(pokemon["id"]))
+    btn_add.clicked.connect(lambda: next(pokemon["id"]))
 
     w.setLayout(grid)
     sa.setWidget(w)
@@ -76,4 +80,12 @@ def display_pokemon_character(pokemon):
 
 
 def add_team(id):
+    print(str(id))
+
+
+def previous(id):
+    print(str(id))
+
+
+def next(id):
     print(str(id))

@@ -36,11 +36,17 @@ class Pokedex():
                 statistiques.append(Stat(result["stats"][index]["stat"]["name"],result["stats"][index]["base_stat"],result["stats"][index]["effort"]))
             
             abilities=[]
-            for abi in range(1,len(result["abilities"])):
+            for abi in range(0,len(result["abilities"])):
                 rAbi=requests.get(result["abilities"][abi]["ability"]["url"])
                 if rAbi.status_code==200:
                     resultAbi=rAbi.json()
-                    abilities.append(Abilities(resultAbi["name"],resultAbi["effect_entries"][0]["effect"],resultAbi["effect_entries"][0]["short_effect"]))
+                    englishRow=0
+                    i=0
+                    for effect_entries in resultAbi["effect_entries"]:
+                        if effect_entries["language"]["name"]=="en":
+                            englishRow=i
+                        i+=1
+                    abilities.append(Abilities(resultAbi["name"],resultAbi["effect_entries"][englishRow]["effect"],resultAbi["effect_entries"][englishRow]["short_effect"]))
             self.pokedex[id].charge(sprite,type1,type2,statistiques,abilities)
 
 

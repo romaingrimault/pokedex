@@ -18,11 +18,30 @@ class Pokedex():
                 i+=1
     def affiche(self):
         for pokemon in self.pokedex:
-            print(pokemon)
             self.pokedex[pokemon].affiche()
 
     def loadById(self,id):
-        pass
+        r=requests.get(self.pokedex[id].url)
+        if r.status_code==200:
+            result=r.json()
+            sprite=result["sprites"]["back_default"]
+            if len(result["types"])==2:
+                type1=result["types"][0]["type"]["name"]
+                type2=result["types"][1]["type"]["name"]
+            else:
+                type1=result["types"][0]["type"]["name"]
+                type2=None
+            statistiques=[]
+            for index in range(0,len(result["stats"])):
+                statistiques.append(Stat(result["stats"][index]["stat"]["name"],result["stats"][index]["base_stat"],result["stats"][index]["effort"]))
+            
+            abilities=[]
+            for abi in range(1,len(result["abilities"])):
+                rAbi=requests.get(result["abilities"][abi]["ability"]["url"])
+                if rAbi.status_code==200:
+                    resultAbi=rAbi.json()
+                    abilities.append(Abilities(resultAbi["name"],resultAbi["effect_entries"][0]["effect"],resultAbi["effect_entries"][0]["short_effect"]))
+            self.pokedex[id].charge(sprite,type1,type2,statistiques,abilities)
 
 
 

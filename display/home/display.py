@@ -1,7 +1,7 @@
 import requests
-import urllib3
+from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QMainWindow, QWidget, QLabel, QGridLayout
+from PyQt5.QtWidgets import QMainWindow, QWidget, QLabel, QGridLayout, QScrollArea
 from pokedex.display.setter import setter
 
 
@@ -18,24 +18,31 @@ class HomeMenu(QMainWindow):
 
 
 def display_home(pokemons):
+    sa = QScrollArea()
     w = QWidget()
-    print(pokemons)
-
-    # ----- elements label -----
-    name = QLabel(pokemons["name"])
-    id = QLabel("#" + str(pokemons["id"]))
-    sprite = sprite_pokemon(pokemons["url"], pokemons["name"])
 
     # ----- grid -----
     grid = QGridLayout()
 
-    grid.addWidget(sprite, 0, 0)
-    grid.addWidget(name, 1, 0)
-    grid.addWidget(id, 2, 0)
+    count_repeat = 0
+    for pokemon in pokemons:
+
+        # ----- elements label -----
+        name = QLabel(pokemon["name"])
+        id = QLabel("#" + str(pokemon["id"]))
+        sprite = sprite_pokemon(pokemon["url"], pokemon["name"])
+
+        grid.addWidget(sprite, (count_repeat // 5) * 5 + 0, count_repeat % 5)
+        grid.addWidget(name, (count_repeat // 5) * 5 + 1, count_repeat % 5, alignment=Qt.AlignCenter)
+        grid.addWidget(id, (count_repeat // 5) * 5 + 2, count_repeat % 5, alignment=Qt.AlignCenter)
+
+        count_repeat += 1
 
     w.setLayout(grid)
+    sa.setWidget(w)
+    sa.setAlignment(Qt.AlignHCenter)
 
-    return w
+    return sa
 
 
 def sprite_pokemon(url, name):

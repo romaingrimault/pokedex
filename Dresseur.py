@@ -5,15 +5,10 @@ from pokemon import *
 class Dresseur():
 
     def __init__(self):
-        self.pokemons = []
+        self.teams = []
 
-    def afficheMesPokemons(self):
-        for pokemon in self.pokemons:
-            pokemon.affiche()
+    def addTeam(self, team):
+        self.teams.append(team)
 
-    def addPokemon(self, pokemon):
-        pokemonToAdd = Pokemon(pokemon.id, pokemon.nom, pokemon.image, pokemon.type1, pokemon.type2, pokemon.statistiques, pokemon.abilities)
-        self.pokemons.append(pokemonToAdd)
-
-    def removePokemon(self, pokemon):
-        self.pokemons.remove(pokemon)
+    def removeTeam(self,team):
+        self.teams.remove(team)

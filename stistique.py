@@ -1,5 +1,5 @@
 
-class stat():
+class Stat():
     def __init__(self,name,stat,effort):
         self.name=name
         self.stat_v=stat

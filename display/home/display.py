@@ -49,4 +49,4 @@ def display_home(pokemons):
 
 
 def function_view(id):
-    print(str(id))
+    return id

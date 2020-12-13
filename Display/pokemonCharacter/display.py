@@ -24,7 +24,7 @@ def display_pokemon_character(pokemon):
     grid = QGridLayout()
 
     # ----- elements label -----
-    sprite = sprite_pokemon(pokemon.sprite, pokemon.nom)
+    #sprite = sprite_pokemon(pokemon.sprite, pokemon.nom)
     id_name = QLabel(
         "#" + str(pokemon.id) + "\n" +
         pokemon.nom
@@ -49,7 +49,7 @@ def display_pokemon_character(pokemon):
     count_repeat = 0
     for stat in pokemon.statistiques:
 
-        stat_label = QLabel(stat.name + ": " + str(stat.stat))
+        stat_label = QLabel(stat.name + ": " + str(stat.stat_v))
         grid.addWidget(stat_label, (5 + (count_repeat // 3)), (3 * (count_repeat % 3)), 2, 1)
         count_repeat += 1
 
@@ -57,12 +57,12 @@ def display_pokemon_character(pokemon):
     count_repeat = 0
     for ability in pokemon.abilities:
 
-        ability_label = QLabel(ability.name + ": \n" + ability.effect + "\n" + abilitry.short_effect)
+        ability_label = QLabel(ability.name + ": \n" + ability.effect + "\n" + ability.short_effect)
         grid.addWidget(ability_label, (11 + (count_repeat // 3)), (3 * (count_repeat % 3)), 2, 1)
         count_repeat += 1
 
     # ----- set widgets in grid -----
-    grid.addWidget(sprite, 0, 0, 3, 3)
+   # grid.addWidget(sprite, 0, 0, 3, 3)
     grid.addWidget(id_name, 1, 4)
     grid.addWidget(stat_label_title, 4, 0)
     grid.addWidget(abilities_label_title, 10, 0)
@@ -90,3 +90,9 @@ def previous(id):
 
 def next(id):
     print(str(id))
+
+
+def main(pokemon):
+    app = QApplication(sys.argv)
+    w = PokemonCharacter(pokemon)
+    sys.exit(app.exec_())

@@ -41,7 +41,7 @@ def display_pokemon_character(pokemon):
     grid.addWidget(type_label, 2, 4, 1, 1)
 
     if pokemon.type2 is not None:
-        type_label = QLabel("\n" + pokemon.type2 )
+        type_label = QLabel("\n" + pokemon.type2)
         grid.addWidget(type_label, 2, 5, 1, 1)
      
 

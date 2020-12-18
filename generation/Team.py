@@ -1,17 +1,22 @@
-from pokemon import *
+from generation.pokemon import *
 
 class Team():
-
+    pokemons=None
     def __init__(self):
         self.pokemons = []
 
     def addPokemon(self, pokemon):
-        if(len(self.pokemons) <=5):
+        if(len(self.pokemons) <5):
             self.pokemons.append(pokemon)
-            message = "pokémon ajouté"
+            return True
         else:
-            message = "équipe au grand complet, impossible d'en ajouter de nouveau"
-        return message
+            return False
+    def testTeam(self):
+        if(len(self.pokemons) <5):
+            return True
+        else:
+            return False
 
-    def removePokemon(self, pokemon):
-        self.pokemons.remove(pokemon)
+    def removePokemon(self, index):
+        print ("Suppretion de "+str(index))
+        self.pokemons.pop(index)

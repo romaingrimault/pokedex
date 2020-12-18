@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QLabel
 
 
 def sprite_pokemon(url, name):
-    name_file = "../sprites/" + name + ".png"
+    name_file = "./Display/sprites/" + name + ".png"
     data = requests.get(url, allow_redirects=True)
 
     open(name_file, 'wb').write(data.content)

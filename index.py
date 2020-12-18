@@ -1,7 +1,7 @@
 import sys
 from PyQt5.QtWidgets import QApplication
-from Display.home.display import HomeMenu
-from generation.pokedex import *
+from Display.home.display import *
+from generation.pokedex import Pokedex
 
 
 def main():
